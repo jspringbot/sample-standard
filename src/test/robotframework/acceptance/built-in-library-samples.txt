@@ -4,32 +4,36 @@ Library         BuiltIn
 
 
 *** Test Cases ***
-For Loop Example
-    [Tags]  shiela
-    [Tags]  shiela1
-    @{list}=        Create List     a   b   c
-    :FOR    ${item}     IN  @{list}
-    \   Log     ${item}
-
 Catenate Example
+    [Documentation]     Catenates the given items together and returns the resulted string.
+    [Tags]      catenate
     ${str1} =   Catenate    Hello           world
     ${str2} =   Catenate    SEPARATOR=---   Hello   world
     ${str3} =   Catenate    SEPARATOR=      Hello   world
 
-Convert To Binary
-    ${result} =     Convert To Binary   10                          # Result is 1010
-    ${result} =     Convert To Binary   F   base=16     prefix=0b   # Result is 0b1111
-    ${result} =     Convert To Binary   -2  prefix=B    length=4    # Result is -B0010
+Get Count Example
+    [Documentation]     Get Count returns and logs how many times item2 is found from item1.
+    [Tags]          get-count
+    @{list}=        Create List     4   1   4   2   3   4   5
+    ${count} =      Get Count       ${list}         4
 
-Convert To Hex
-    ${result} =     Convert To Hex      255                                 # Result is FF
-    ${result} =     Convert To Hex      -10     prefix=0x   length=2        # Result is -0x0A
-    ${result} =     Convert To Hex      255     prefix=X    lowercase=yes   # Result is Xff
+Get Length Example
+    [Documentation]     Get Count returns and logs the length of the given item.
+    [Tags]          get-length
+    @{list}=        Create List     4   1   4   2   3   4   5
+    ${count} =      Get Length      ${list}
 
-Convert To Integer
-    ${result} =     Convert To Integer  100         # Result is 100
-    ${result} =     Convert To Integer  FF AA   16  # Result is 65450
-    ${result} =     Convert To Integer  100     8   # Result is 64
-    ${result} =     Convert To Integer  -1002       # Result is -4
-    ${result} =     Convert To Integer  0b100       # Result is 4
-    ${result} =     Convert To Integer  -0x100      # Result is -256
+Should Be Equal Example
+    [Tags]      should-be-equal
+    ${var}=     Set Variable        hello
+    Should Be Equal     ${var}      hello
+
+Should Be True Example
+    [Tags]      should-be-true
+    @{list}=        Create List     a   b   c   d   e   f   g
+    Should Be True  ${list}         # Passes if ${list} is not empty
+    ${count} =      Get Length      ${list}
+    Should Be True  ${count}        # Passes if ${number} is not zero
+    Should Be True  ${count} < 10
+    ${status}=      Set Variable    PASS
+    Should Be True  '${status}' == 'PASS'
