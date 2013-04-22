@@ -8,16 +8,20 @@ ${count}               0
 *** Test Cases ***
 Create And Log Variable
     [Tags]          variable
+    ${var}              Set Variable        123
     ${str}=             Set Variable        abc
+    ${spaceStr}         Set Variable        ${SPACE}
     ${emptyStr}=        Set Variable        ${empty}
     ${nullStr}=         Set Variable        ${null}
     ${varWithSpaces}=   Set Variable        This\ \ \ text\ \ \ should\ \ \ have\ \ \ spaces.
-    ${var1} =           Set Variable If     ${count} == 0  zero    nonzero
+    ${count}=           Set Variable        0
+    ${countStr}=        Set Variable If     ${count} == 0  zero    nonzero
+    Log             ${car}
     Log             ${str}
+    Log             -${spaceStr}-
     Log             ${emptyStr}
     Log             ${nullStr}
     Log             ${varWithSpaces}
-    Should Be Equal     var1                zero
 
 Create And Loop Items in List
     [Tags]      for-loop

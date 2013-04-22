@@ -37,3 +37,8 @@ Should Be True Example
     Should Be True  ${count} < 10
     ${status}=      Set Variable    PASS
     Should Be True  '${status}' == 'PASS'
+
+Should Be Equal As String Example
+    [Tags]      should-be-equal-as-string
+    ${str}=     Set Variable        hello
+    Should Be Equal As Strings      ${str}    hello

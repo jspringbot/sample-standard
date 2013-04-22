@@ -1,0 +1,37 @@
+*** Settings ***
+Library     String
+
+*** Test Cases ***
+Replace String Example
+    [Tags]      replace
+    ${str}=     Set Variable        Hello World
+    ${str}=     Replace String      ${str}  Hello   Hi
+    ${str}=     Replace String      ${str}  World   Universe    1
+
+Get Substring Example
+    [Tags]      get-substring
+    ${string}           Set Variable    The quick brown fox jumps over the lazy dog.
+    ${ignore first}=    Get Substring   ${string}   1
+    ${ignore last}=     Get Substring   ${string}   ${empty}    -1
+    ${5th to 10th}=     Get Substring   ${string}   4           10
+    ${first two}=       Get Substring   ${string}   ${empty}    1
+    ${last two}=        Get Substring   ${string}   ${empty}    -2
+
+Should Be Uppercase Example
+    [Tags]      should-be-uppercase
+    Should Be Uppercase     HELLO
+    Should Be Uppercase     HELLO!
+    Should Be Uppercase     HELLO@
+
+Split String Example
+    [Tags]      split-string
+    ${string1}=     Set Variable    The quick brown fox jumps over the lazy dog.
+    ${string2}=     Set Variable    The, quick, brown, fox, jumps, over, the, lazy, dog.
+    ${string3}=     Set Variable    The::quick::brown::fox::jumps::over::the::lazy::dog.
+    @{words1}=      Split String    ${string1}
+    @{words2}=      Split String    ${string2}      ,${SPACE}
+    ${pre}          ${post}=        Split String    ${string3}   ::      1
+
+Split String To Characters Example
+    [Tags]      split-string-to-characters
+    @{characters}=      Split String To Characters  The quick brown fox jumps over the lazy dog.
