@@ -16,12 +16,12 @@ Create And Log Variable
     ${varWithSpaces}=   Set Variable        This\ \ \ text\ \ \ should\ \ \ have\ \ \ spaces.
     ${count}=           Set Variable        0
     ${countStr}=        Set Variable If     ${count} == 0  zero    nonzero
-    Log             ${var}
-    Log             ${str}
-    Log             -${spaceStr}-
-    Log             ${emptyStr}
-    Log             ${nullStr}
-    Log             ${varWithSpaces}
+    Log                 ${var}
+    Log                 ${str}
+    Log                 -${spaceStr}-
+    Log                 ${emptyStr}
+    Log                 ${nullStr}
+    Log                 ${varWithSpaces}
 
 Create And Loop Items in List
     [Tags]      for-loop
