@@ -1,0 +1,32 @@
+*** Settings ***
+Documentation   Test using only Robot Framework Collections Library
+Library         Collections
+
+*** Test Cases ***
+Append To List Example
+    [Tags]      append-to-list
+    @{list}=        Create List     a   b   c   d
+    Append To List  ${list}         e   f   g   h
+
+Combine List Example
+    [Tags]      combine-list
+    @{list1}=       Create List     a   b   c   d
+    @{list2}=       Create List     e   f   g   h
+    ${list3}=       Combine Lists   ${list1}    ${list2}
+
+Create Dictionary Example
+    [Tags]      create-dictionary
+    ${x}=   Create Dictionary       name    value
+    ${y}=   Create Dictionary       a   1       b   2
+    ${z}=   Create Dictionary       a   ${1}    b   ${2}
+
+Remove Duplicates Example
+    [Tags]      remove-duplicates
+    @{list}=    Create List     a   b   c   d   e   a   b   d
+    Remove Duplicates           ${list}
+
+Sort List Example
+    [Tags]      sort-list
+    @{list}=    Create List     2   1   a   d   e
+    Sort List   ${list}
+    Log         ${list}

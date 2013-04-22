@@ -16,7 +16,7 @@ Create And Log Variable
     ${varWithSpaces}=   Set Variable        This\ \ \ text\ \ \ should\ \ \ have\ \ \ spaces.
     ${count}=           Set Variable        0
     ${countStr}=        Set Variable If     ${count} == 0  zero    nonzero
-    Log             ${car}
+    Log             ${var}
     Log             ${str}
     Log             -${spaceStr}-
     Log             ${emptyStr}

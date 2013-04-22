@@ -1,4 +1,5 @@
 *** Settings ***
+Documentation   Test using only Robot Framework String Library
 Library     String
 
 *** Test Cases ***
