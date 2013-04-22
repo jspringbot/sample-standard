@@ -1,0 +1,11 @@
+*** Settings ***
+Documentation   Test using only Robot Framework Operating System Library
+Library         OperatingSystem
+
+*** Test Cases ***
+Create And Verify File Exist
+    [Tags]              create-and-verify-file
+    Create Directory    target/tmp
+    Create File         target/tmp/file.txt
+    File Should Exist   target/tmp/file.txt
+    Copy File           target/tmp/file.txt     target/tmp/file2.txt

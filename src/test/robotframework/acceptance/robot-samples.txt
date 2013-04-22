@@ -1,0 +1,74 @@
+*** Settings ***
+Documentation   Test using only Robot Framework Standard Libraries
+Library         BuiltIn
+
+*** Variables ***
+${count}               0
+
+*** Test Cases ***
+Create And Log Variable
+    [Tags]          variable
+    ${str}=             Set Variable        abc
+    ${emptyStr}=        Set Variable        ${empty}
+    ${nullStr}=         Set Variable        ${null}
+    ${varWithSpaces}=   Set Variable        This\ \ \ text\ \ \ should\ \ \ have\ \ \ spaces.
+    ${var1} =           Set Variable If     ${count} == 0  zero    nonzero
+    Log             ${str}
+    Log             ${emptyStr}
+    Log             ${nullStr}
+    Log             ${varWithSpaces}
+    Should Be Equal     var1                zero
+
+Create And Loop Items in List
+    [Tags]      for-loop
+    @{list}=    Create List     a   b   c
+    :FOR    ${item}     IN  @{list}
+    \   Log     ${item}
+
+Exit A For Loop
+    [Tags]      exit-for-loop
+    :FOR    ${item}     IN  ENTER   GO  EXIT    STOP
+    \   Run Keyword If  '${item}' == 'EXIT'  Exit For Loop
+    \   Log             ${item}
+
+Evaluate
+    [Tags]              evaluate
+    [Documentation]     Evaluates the given expression in Python and returns the results.
+    ${result} =     Set Variable    4.55
+    ${status} =     Evaluate        0 < ${result} < 10
+    ${down} =       Evaluate        int(${result})
+    ${up} =         Evaluate        math.ceil(${result})            math
+    ${random} =     Evaluate        random.randint(0, sys.maxint)   random,sys
+
+Convert
+    [Tags]          convert
+    ${number}=      Set Variable            17
+    ${integer}=     Convert To Integer      ${number}
+    Log             ${number}
+    Log             ${integer}
+
+Call A Keyword
+    [Tags]          call-a-keyword
+    Log Date Today
+
+Call Keywords With Arguments
+    [Tags]          call-a-keyword-with-arguments
+    Keyword With Required Argument      hello
+    Keyword With Optional Argument
+
+Repeat Keyword
+    [Tags]          repeat-keywords
+    Repeat Keyword  5   LogDate Today
+
+*** Keywords ***
+Log Date Today
+    ${time}=        Get Time
+    Log             ${time}
+
+Keyword With Required Argument
+    [Arguments]     ${required}
+    Log             ${required}
+
+Keyword With Optional Argument
+    [Arguments]     ${optional}=world
+    Log             ${optional}

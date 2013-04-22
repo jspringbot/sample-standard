@@ -1,10 +1,12 @@
 *** Settings ***
-Documentation   Test using only Robot Framework Standard Libraries
-Library     BuiltIn
+Documentation   Test using only Robot Framework BuiltIn Library
+Library         BuiltIn
 
 
 *** Test Cases ***
 For Loop Example
+    [Tags]  shiela
+    [Tags]  shiela1
     @{list}=        Create List     a   b   c
     :FOR    ${item}     IN  @{list}
     \   Log     ${item}
