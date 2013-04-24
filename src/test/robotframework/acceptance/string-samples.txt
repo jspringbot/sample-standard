@@ -8,6 +8,7 @@ Replace String Example
     ${str}=     Set Variable        Hello World
     ${str}=     Replace String      ${str}  Hello   Hi
     ${str}=     Replace String      ${str}  World   Universe    1
+    Should Be Equal As String       ${str}  Hi Universe
 
 Get Substring Example
     [Tags]      get-substring

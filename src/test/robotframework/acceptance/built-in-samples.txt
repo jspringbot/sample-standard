@@ -10,18 +10,23 @@ Catenate Example
     ${str1} =   Catenate    Hello           world
     ${str2} =   Catenate    SEPARATOR=---   Hello   world
     ${str3} =   Catenate    SEPARATOR=      Hello   world
+    Should Be Equal As Strings      ${str1}     Hello world
+    Should Be Equal As Strings      ${str2}     Hello---world
+    Should Be Equal As Strings      ${str3}     Helloworld
 
 Get Count Example
     [Documentation]     Get Count returns and logs how many times item2 is found from item1.
     [Tags]          get-count
     @{list}=        Create List     4   1   4   2   3   4   5
     ${count} =      Get Count       ${list}         4
+    Should Be Equal As Integers     ${count}    3
 
 Get Length Example
     [Documentation]     Get Count returns and logs the length of the given item.
     [Tags]          get-length
     @{list}=        Create List     4   1   4   2   3   4   5
     ${count} =      Get Length      ${list}
+    Should Be Equal As Integers     ${count}    7
 
 Should Be Equal Example
     [Tags]      should-be-equal
