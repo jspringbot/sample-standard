@@ -1,0 +1,10 @@
+*** Settings ***
+Documentation   Test Resource to show how to use the different test structures.
+Library         BuiltIn
+
+*** Keywords ***
+My Suite Setup
+    Log         Suite setup...
+
+My Suite Teardown
+    Log         Suite teardown...

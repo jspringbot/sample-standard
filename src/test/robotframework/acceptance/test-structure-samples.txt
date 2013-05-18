@@ -5,7 +5,7 @@ Suite Setup     My Suite Setup
 Suite Teardown  My Suite Teardown
 Test Setup      My Test Setup
 Test Teardown   My Test Teardown
-
+Resource        resources.txt
 
 *** Test Cases ***
 Test Case 1
@@ -17,12 +17,6 @@ Test Case 2
     Log         Test Case 2
 
 *** Keywords ***
-My Suite Setup
-    Log         Suite setup...
-
-My Suite Teardown
-    Log         Suite teardown...
-
 My Test Setup
     Log         Test setup...
 
