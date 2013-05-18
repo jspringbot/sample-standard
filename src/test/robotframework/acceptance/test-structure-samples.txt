@@ -1,0 +1,30 @@
+*** Settings ***
+Documentation   Test that show how to use the different test structures.
+Library         BuiltIn
+Suite Setup     My Suite Setup
+Suite Teardown  My Suite Teardown
+Test Setup      My Test Setup
+Test Teardown   My Test Teardown
+
+
+*** Test Cases ***
+Test Case 1
+    [Tags]      test-case-1
+    Log         Test Case 1
+
+Test Case 2
+    [Tags]      test-case-2
+    Log         Test Case 2
+
+*** Keywords ***
+My Suite Setup
+    Log         Suite setup...
+
+My Suite Teardown
+    Log         Suite teardown...
+
+My Test Setup
+    Log         Test setup...
+
+My Test Teardown
+    Log         Test teardown...

@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation   Test using only Robot Framework String Library
-Library     String
+Library         String
 
 *** Test Cases ***
 Replace String Example
