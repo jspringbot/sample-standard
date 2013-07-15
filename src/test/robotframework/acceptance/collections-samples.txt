@@ -15,7 +15,7 @@ Combine List Example
     @{list1}=       Create List     a   b   c   d
     @{list2}=       Create List     e   f   g   h
     ${list3}=       Combine Lists   ${list1}    ${list2}
-    ${count} =      Get Length      ${list}
+    ${count} =      Get Length      ${list3}
     Should Be Equal As Integers     ${count}    8
 
 Create Dictionary Example
@@ -25,11 +25,11 @@ Create Dictionary Example
     ${z}=   Create Dictionary       a   ${1}    b   ${2}
 
 Remove Duplicates Example
-    [Tags]      remove-duplicates
-    @{list}=    Create List     a   b   c   d   e   a   b   d
-    Remove Duplicates           ${list}
-    ${count} =      Get Length      ${list}
-    Should Be Equal As Integers     ${count}    2
+    [Tags]          remove-duplicates
+    @{list}=        Create List     a   b   c   d   e   a   b   d
+    @{newList}=     Remove Duplicates           ${list}
+    ${count} =      Get Length      ${newList}
+    Should Be Equal As Integers     ${count}    5
 
 Sort List Example
     [Tags]      sort-list
